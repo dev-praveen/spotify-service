@@ -10,3 +10,6 @@ spring:
         provider:
           spotify:
             tokenUri: https://accounts.spotify.com/api/token
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
