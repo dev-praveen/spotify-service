@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          spotify:
+            clientId: ${client-id}
+            clientSecret: ${client-secret}
+            authorizationGrantType: client_credentials
+        provider:
+          spotify:
+            tokenUri: https://accounts.spotify.com/api/token
