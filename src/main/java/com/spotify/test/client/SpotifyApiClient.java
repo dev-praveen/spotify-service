@@ -1,5 +1,6 @@
 package com.spotify.test.client;
 
+import com.spotify.test.model.Artist;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -8,13 +9,13 @@ public class SpotifyApiClient {
 
   private final WebClient spotifyWebClient;
 
-  public String getArtistDetails(String artistId) {
+  public Artist getArtistDetails(String artistId) {
 
     return spotifyWebClient
         .get()
         .uri("/artists/" + artistId)
         .retrieve()
-        .bodyToMono(String.class)
+        .bodyToMono(Artist.class)
         .block();
   }
 }
