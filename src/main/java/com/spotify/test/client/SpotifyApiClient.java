@@ -17,7 +17,6 @@ public class SpotifyApiClient {
   public Artist getArtistDetails(String artistId) {
 
     try {
-
       return spotifyWebClient
           .get()
           .uri("/artists/" + artistId)
@@ -25,9 +24,10 @@ public class SpotifyApiClient {
           .bodyToMono(Artist.class)
           .block();
     } catch (WebClientResponseException e) {
-      log.error("Exception occured while fetching artist details from Spotify API, artistId: {}", artistId);
+      log.error(
+          "Exception occured while fetching artist details from Spotify API, artistId: {}",
+          artistId);
       throw new SpotifyApiException(e, e.getStatusCode().value());
     }
-
   }
 }

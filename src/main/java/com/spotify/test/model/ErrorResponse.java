@@ -16,8 +16,8 @@ import lombok.Setter;
 @Setter(value = AccessLevel.NONE)
 public class ErrorResponse {
 
-    private LocalDateTime timestamp;
-    private int status;
-    private String error;
-    private String path;
+  private LocalDateTime timestamp;
+  private int status;
+  private String error;
+  private String path;
 }

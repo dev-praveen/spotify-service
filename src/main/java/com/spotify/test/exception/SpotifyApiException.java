@@ -5,11 +5,11 @@ import lombok.Getter;
 @Getter
 public class SpotifyApiException extends RuntimeException {
 
-    private final int statusCode;
+  private final int statusCode;
 
-    public SpotifyApiException(Throwable tw, int statusCode) {
+  public SpotifyApiException(Throwable tw, int statusCode) {
 
-        super(tw);
-        this.statusCode = statusCode;
-    }
+    super(tw);
+    this.statusCode = statusCode;
+  }
 }

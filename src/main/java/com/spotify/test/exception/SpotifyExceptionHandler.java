@@ -14,21 +14,25 @@ import com.spotify.test.model.ErrorResponse;
 @RestControllerAdvice
 public class SpotifyExceptionHandler {
 
-    @ExceptionHandler(SpotifyApiException.class)
-    public ResponseEntity<ErrorResponse> handleException(SpotifyApiException ex, WebRequest request) {
-        HttpStatusCode httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-        final var statusCode = ex.getStatusCode();
-        final var path = ((ServletWebRequest) request).getRequest().getRequestURI();
-        final var errorResponse = ErrorResponse.builder().timestamp(LocalDateTime.now()).status(statusCode)
-                .error(ex.getMessage())
-                .path(path).build();
+  @ExceptionHandler(SpotifyApiException.class)
+  public ResponseEntity<ErrorResponse> handleException(SpotifyApiException ex, WebRequest request) {
+    HttpStatusCode httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+    final var statusCode = ex.getStatusCode();
+    final var path = ((ServletWebRequest) request).getRequest().getRequestURI();
+    final var errorResponse =
+        ErrorResponse.builder()
+            .timestamp(LocalDateTime.now())
+            .status(statusCode)
+            .error(ex.getMessage())
+            .path(path)
+            .build();
 
-        if (statusCode == 404) {
-            httpStatusCode = HttpStatus.NOT_FOUND;
-        } else if (statusCode == 400) {
-            httpStatusCode = HttpStatus.BAD_REQUEST;
-        }
-
-        return ResponseEntity.status(httpStatusCode).body(errorResponse);
+    if (statusCode == 404) {
+      httpStatusCode = HttpStatus.NOT_FOUND;
+    } else if (statusCode == 400) {
+      httpStatusCode = HttpStatus.BAD_REQUEST;
     }
+
+    return ResponseEntity.status(httpStatusCode).body(errorResponse);
+  }
 }
