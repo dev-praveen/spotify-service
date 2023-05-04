@@ -7,9 +7,9 @@ public class SpotifyApiException extends RuntimeException {
 
   private final int statusCode;
 
-  public SpotifyApiException(Throwable tw, int statusCode) {
+  public SpotifyApiException(String msg, int statusCode) {
 
-    super(tw);
+    super(msg);
     this.statusCode = statusCode;
   }
 }
