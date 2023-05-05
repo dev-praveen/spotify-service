@@ -19,7 +19,7 @@ public class SpotifyApiClient {
 
     return spotifyWebClient
         .get()
-        .uri("/artists/" + artistId)
+        .uri("/artists/{artistId}", artistId)
         .retrieve()
         .onStatus(
             HttpStatus.NOT_FOUND::equals,
