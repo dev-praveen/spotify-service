@@ -1,4 +1,8 @@
 spring:
+  #application:
+    #name: config
+  #config:
+    #import: configserver:http://localhost:8888
   security:
     oauth2:
       client:

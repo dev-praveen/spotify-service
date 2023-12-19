@@ -16,7 +16,9 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(SpotifyController.class)
+@WebMvcTest(
+    value = SpotifyController.class)
+    //properties = {"spring.cloud.config.enabled=false"})
 @AutoConfigureMockMvc(addFilters = false)
 class SpotifyControllerTest {
 
