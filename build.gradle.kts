@@ -1,6 +1,6 @@
 plugins {
     java
-    id("org.springframework.boot") version "3.2.0"
+    id("org.springframework.boot") version "3.1.8"
     id("io.spring.dependency-management") version "1.1.0"
 }
 
@@ -18,14 +18,15 @@ repositories {
     mavenCentral()
 }
 
-//extra["springCloudVersion"] = "2022.0.4"
+extra["springCloudVersion"] = "2022.0.4"
 
 dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    //implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -35,11 +36,11 @@ dependencies {
     testImplementation("org.mockito:mockito-core:5.3.1")
 }
 
-/*dependencyManagement {
+dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
-}*/
+}
 
 tasks.withType<Test> {
     useJUnitPlatform()

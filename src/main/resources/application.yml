@@ -1,4 +1,13 @@
 spring:
+  application:
+    name: spotify-config
+  cloud:
+    config:
+      profile: dev
+      username: secure_user
+      password: secure_config
+  config:
+    import: configserver:http://localhost:8888
   security:
     oauth2:
       client:
@@ -9,7 +18,12 @@ spring:
             authorizationGrantType: client_credentials
         provider:
           spotify:
-            tokenUri: https://accounts.spotify.com/api/token
+            tokenUri: ${spotify.tokenUri}
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
