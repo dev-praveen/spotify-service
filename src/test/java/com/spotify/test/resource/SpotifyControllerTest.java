@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.cloud.autoconfigure.RefreshAutoConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,7 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(
     value = SpotifyController.class,
     properties = {"spring.cloud.config.enabled=false"})
-@ImportAutoConfiguration(RefreshAutoConfiguration.class)
+//@ImportAutoConfiguration(RefreshAutoConfiguration.class)
+@ActiveProfiles("test")
 @AutoConfigureMockMvc(addFilters = false)
 class SpotifyControllerTest {
 
