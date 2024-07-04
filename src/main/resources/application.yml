@@ -1,6 +1,8 @@
 spring:
   application:
     name: spotify-service
+  jackson:
+    default-property-inclusion: NON_NULL
   cloud:
     config:
       profile: dev
